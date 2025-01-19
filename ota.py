@@ -135,7 +135,7 @@ async def start_ota(ble_address: str, file_name: str):
                 toSend.append(data[(position*PART)+(MTU * int(parts)) + y])
             await send_data(client, toSend, False)
         update = bytearray([0xFC, int((end - start)/256), int((end - start) % 256), int(position/256), int(position % 256) ])
-        await send_data(client, update, True)
+        await send_data(client, update, False)
 
     async def send_data(client: BleakClient, data: bytearray, response: bool):
         await client.write_gatt_char(UART_RX_CHAR_UUID, data, response)
