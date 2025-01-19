@@ -111,7 +111,7 @@ class MyCallbacks: public BLECharacteristicCallbacks {
           if (full_partition_recv){ //verification that if complete data is recv only then update the partition number and save the current one to spiffs
             cur = (pData[3] * 256) + pData[4];
             writeFile = true;
-            Serial.print("True for ");
+            Serial.print("Full partition recieved for ");
             Serial.println(cur);
           }
           if (cur < parts - 1) {
